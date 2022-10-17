@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="facturas_electronicas.list">
+      <field name="name">facturas_electronicas.list</field>
+      <field name="model">facturas_electronicas.facturas_electronicas</field>
+      <field name="arch" type="xml" >
+        <tree default_order="invoice_date desc" create="false" >
+          <field name="name"/>
+          <field name="invoice_partner_display_name" /> 
+          <field name="invoice_date"/> 
+          <field name="company_id"/>   
+          <field name="amount_total"/> 
+          <field name="resultado"/> 
+          <field name="enviado"/>
+          <button name="f_enviar" string="Enviar" class="oe_highlight" type="object"   attrs="{'invisible': [('resultado','=','procesado')]}"/>  
+        </tree>
+      </field>
+
+    </record>
+      
+    <record model="ir.ui.view" id="view_log_tree">
+      <field name="name">view.log.tree</field>
+      <field name="model">facturas_electronicas.fe_log</field>
+      <field name="arch" type="xml">
+        <tree create="false">
+          <field name="name"/>
+          <field name="fecha"/> 
+          <field name="mensaje"/> 
+          <field name="estado"/> 
+        </tree>
+      </field>
+
+    </record>
+
+    <record model="ir.ui.view" id="view_distritos_tree">
+      <field name="name">view.distritos.tree</field>
+      <field name="model">x_res.state.distrito</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="x_display_name"/>
+          <field name="x_codigo"/> 
+        </tree>
+      </field>
+
+    </record>
+    
+    <record model="ir.ui.view" id="view_corregimientos_tree">
+      <field name="name">view.corregimientos.tree</field>
+      <field name="model">x_res.state.corregimiento</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="x_display_name"/>
+          <field name="x_codigo"/> 
+        </tree>
+      </field>
+
+    </record>  
+
+    <record model="ir.ui.view" id="view_segmentos_tree">
+      <field name="name">view.segmentos.tree</field>
+      <field name="model">x_product.cpbs.segmento</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="x_display_name"/>
+          <field name="x_name"/>  
+          <field name="x_codigo"/> 
+        </tree>
+      </field>
+
+    </record>  
+
+    <record model="ir.ui.view" id="view_familias_tree">
+      <field name="name">view.familias.tree</field>
+      <field name="model">x_product.cpbs.familia</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="x_display_name"/>
+          <field name="x_name"/>  
+          <field name="x_codigo"/>
+          <field name="x_segmento_id"/>  
+        </tree>
+      </field>
+
+    </record>  
+  
+      
+    <!-- explicit form view definition -->
+      
+    <record model="ir.ui.view" id="view_facturas_electronicas_facturas_electronicas_form">
+      <field name="name">facturas_electronicas.facturas_electronicas.form</field>
+      <field name="model">facturas_electronicas.facturas_electronicas</field>
+      <field name="arch" type="xml">
+          <form string="Datos Factura" >
+              <sheet>
+                  <group name="group.top">
+                      <group name="group.left">
+                          <field name="name"/>
+                          <field name="invoice_partner_display_name"/>
+                          <field name="invoice_date"/>
+                          <field name="amount_total"/>
+                          <field name="mensaje"/>
+                      </group>    
+                      <group name="group.right">
+                          <field name="type_name"/>
+                          <field name="enviado"/>
+                          <field name="codigo"/>
+                          <field name="resultado"/>
+                      </group>
+                   </group>   
+              </sheet>    
+          </form>
+      </field>
+    </record>
+  
+  
+   <!-- inherited views from account move   
+      
+   <record id="view_invoice_form_inherited" model="ir.ui.view">
+          <field name="name">view.invoice.form.inherited</field>
+          <field name="model">account.move</field>
+          <field name="inherit_id" ref="account.view_move_form"/>
+          <field name="arch" type="xml">
+                <xpath expr="//sheet/group//group[last()]" position="inside">
+
+                 <label for="resultado" attrs="{'invisible': [ ('state', '!=', 'posted')]}"/>
+                 <div class="o_row" attrs="{'invisible': [ ('state', '!=', 'posted')]}">
+                    <field name="resultado" attrs="{'invisible': [ ('state', '!=', 'posted')]}" />
+                    <button name="f_send" string="Reenviar" class="oe_link" type="object" attrs="{'invisible': ['|', ('state', '!=', 'posted'),('resultado','=','procesado')]}"/>
+                 </div>
+    
+              </xpath>
+
+          </field>
+    </record>
+         
+      -->   
+      
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="facturas_electronicas.action_window">
+      <field name="name">Facturas Electronicas</field>
+      <field name="res_model">facturas_electronicas.facturas_electronicas</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="log_list_action_window">
+      <field name="name">Logs de Envio</field>
+      <field name="res_model">facturas_electronicas.fe_log</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="distritos_list_action_window">
+      <field name="name">Distritos Panama</field>
+      <field name="res_model">x_res.state.distrito</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="corregimientos_list_action_window">
+      <field name="name">Corregimientos Panama</field>
+      <field name="res_model">x_res.state.corregimiento</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="segmentos_CPBS_list_action_window">
+       <field name="name">Segmentos CPBS</field>
+      <field name="res_model">x_product.cpbs.segmento</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="familias_CPBS_list_action_window">
+       <field name="name">Familias CPBS</field>
+      <field name="res_model">x_product.cpbs.familia</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+  
+      
+
+    <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="facturas_electronicas.action_server">
+      <field name="name">facturas_electronicas server</field>
+      <field name="model_id" ref="model_facturas_electronicas_facturas_electronicas"/>
+      <field name="state">code</field>
+      <field name="code">
+       env.get('facturas_electronicas.facturas_electronicas').f_actualizar()
+      </field>
+    </record>
+
+    <record model="ir.actions.server" id="facturas_electronicas.action_server_qr">
+      <field name="name">facturas_electronicas actualizar QR</field>
+      <field name="model_id" ref="model_facturas_electronicas_facturas_electronicas"/>
+      <field name="state">code</field>
+      <field name="code">
+        env.get('facturas_electronicas.facturas_electronicas').actualizar_qr()
+      </field>
+    </record>
+  
+
+    <!-- Top menu item -->
+
+    <menuitem name="Facturas Electronicas" id="facturas_electronicas.menu_root"
+              groups="group_factura_admin,group_factura_users,group_factura_consulta,group_logfactura_admin"
+              web_icon="facturas_electronicas,static/description/icon.png"/>
+
+    <!-- menu categories
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+
+
+   return {
+
+                'name': _("Leave Approvals"),
+
+                'type': 'ir.actions.act_window',
+
+                'res_model': 'hr.holidays',
+
+                'view_mode': 'tree,form',
+
+                'view_type': 'form',
+
+                'views': [[False, 'tree'],[False, 'form'],],
+
+                'context': {'search_default_department_id': [hr_emp.department_id.id]},
+
+                'target': 'current',
+
+            }
+
+<menuitem name="Actualizar" id="facturas_electronicas.menu_2" parent="facturas_electronicas.menu_root"/>
+    
+-->
+
+    <menuitem name="Facturas" id="facturas_electronicas.menu_1" parent="facturas_electronicas.menu_root"/>
+
+      
+    <menuitem name="Consultas" id="facturas_electronicas.menu_2" parent="facturas_electronicas.menu_root"/>  
+    
+    <menuitem name="Configuración" id="facturas_electronicas.menu_3" parent="facturas_electronicas.menu_root"/> 
+      
+    <menuitem name="Mantenimiento" id="facturas_electronicas.menu_4" parent="facturas_electronicas.menu_root"/>   
+      
+ 
+    <!-- actions -->
+
+    <menuitem name="Listado" id="facturas_electronicas.menu_1_list" parent="facturas_electronicas.menu_1"
+              action="facturas_electronicas.action_window"/>
+
+   <menuitem name="Logs Envío" id="facturas_electronicas.menu_2_list" parent="facturas_electronicas.menu_2"
+              action="log_list_action_window"/>
+   
+      
+   <menuitem name="Actualizar listado" id="facturas_electronicas" parent="facturas_electronicas.menu_1"
+              action="facturas_electronicas.action_server"/>
+      
+   <menuitem name="Distritos" id="facturas_electronicas.distritos" parent="facturas_electronicas.menu_3"
+              action="distritos_list_action_window"/>   
+   
+   <menuitem name="Corregimientos" id="facturas_electronicas.corregimientos" parent="facturas_electronicas.menu_3"
+              action="corregimientos_list_action_window"/>   
+
+   <menuitem name="Códigos CPBS" id="facturas_electronicas.CPBS" parent="facturas_electronicas.menu_3" />   
+
+   <menuitem name="Segmentos" id="facturas_electronicas.segmento" parent="facturas_electronicas.CPBS"
+              action="segmentos_CPBS_list_action_window"/>   
+
+   <menuitem name="Familias" id="facturas_electronicas.familia" parent="facturas_electronicas.CPBS"
+              action="familias_CPBS_list_action_window"/>   
+      
+   <menuitem name="Actualizar QR" id="facturas_electronicas.QR" parent="facturas_electronicas.menu_4"
+              action="facturas_electronicas.action_server_qr"/>   
+
+  </data>
+</odoo>

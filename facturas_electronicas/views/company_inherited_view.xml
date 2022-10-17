@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <data>
+    <record id="company_form_view_inherit_FE" model="ir.ui.view">
+        <field name="name">company.form.view.inherit.FE</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='favicon']" position="after">
+              <field name="tipoSucursal"/>
+              <field name="codigoSucursalEmisor"/>
+          </xpath>
+            <xpath expr="//field[@name='currency_id']" position="after">
+              <field name="tokenEmpresa" password="True"/>
+              <field name="tokenPassword" password="True"/>
+          </xpath>
+        </field>
+    </record>
+  </data>
+</odoo>

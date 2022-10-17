@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <data>
+     <record id="delivery_view_inherit_ASAP" model="ir.ui.view">
+       <field name="name">delivery.view.inherit.ASAP</field>
+       <field name="model">delivery.carrier</field>
+       <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+       <field name="arch" type="xml">
+         <xpath expr="//field[@name='integration_level']" position="attributes">
+           <attribute name="attrs">{"invisible": ["|","|",["delivery_type","=","fixed"],["delivery_type","=","base_on_rule"],["delivery_type","=","asap"]]}</attribute>
+         </xpath>
+         <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+             <page string="ASAP Configuration" name="studio_page_ZeCLw" attrs="{&quot;invisible&quot;: [[&quot;delivery_type&quot;,&quot;!=&quot;,&quot;asap&quot;]]}">
+             <group name="studio_group_ZeCLw">
+               <group name="studio_group_ZeCLw_left">
+                   <field name="asap_token" password="True"/>
+                   <field name="asap_shared_secret" password="True"/>
+                   <field name="asap_api_key" password="True"/>
+               </group>
+               <group name="studio_group_ZeCLw_right">
+                 <field name="asap_url_prod"/>
+                 <field name="asap_url_test"/>
+                 <field name="asap_price"/>
+               </group>
+             </group>
+            </page>
+         </xpath>
+       </field>
+     </record>    
+  </data>
+</odoo>                 

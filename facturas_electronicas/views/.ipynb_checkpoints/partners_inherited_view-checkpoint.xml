@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <data>
+    <record id="res_partner_view_inherit_FE" model="ir.ui.view">
+        <field name="name">res.partner.view.inherit.FE</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+           <xpath expr="//field[@name='company_type']" position="attributes">
+                  <attribute name="attrs">{}</attribute>
+           </xpath>
+           <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/div[1]/field[@name='state_id']" position="attributes">
+               <attribute name="domain">[]</attribute>
+               <attribute name="options">{"no_quick_create":true,"no_open":true}</attribute>
+           </xpath>
+
+           <xpath expr="//field[@name='vat']" position="attributes">
+               <attribute name="string">RUC</attribute>
+           </xpath>
+           <xpath expr="//field[@name='vat']" position="after">
+               <field name="digitoVerificadorRUC"/>
+           </xpath>
+           <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+               <page string="Datos factura Electronica" name="studio_page_mHJiX">
+                  <group name="studio_group_mHJiX">
+                       <group name="studio_group_mHJiX_left">
+                           <field name="tipoClienteFE"/>
+                           <field name="codigoUbicacion"/>
+                           <field name="distrito_id" domain="[('x_provincia_id', '=', provincia)]" options="{&quot;no_open&quot;:true,&quot;no_create&quot;:true}"/>
+                           <field name="corregimiento_id" domain="[('x_distrito_id', '=', distrito)]" options="{&quot;no_open&quot;:true,&quot;no_create&quot;:true}"/>
+                       </group>
+                       <group name="studio_group_mHJiX_right" string="Solo para empresas del extranjero" attrs="{&quot;invisible&quot;: [[&quot;tipoClienteFE&quot;,&quot;!=&quot;,&quot;04&quot;]]}">
+                            <field name="tipoIdentificacion" attrs="{}"/>
+                            <field name="nroIdentificacionExtranjero" attrs="{}"/>
+                            <field name="provincia" invisible="1"/>
+                            <field name="distrito" invisible="1"/>
+                        </group>
+                  </group>
+               </page>
+           </xpath>
+        </field>
+    </record>
+     
+
+      
+  </data>
+</odoo>

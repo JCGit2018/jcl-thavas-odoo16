@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="inline_form">
+        <div  t-attf-id="banesco_form_{{acquirer_id}}" >
+            <div class="form-group">
+                <label t-attf-for="banesco_card_{{acquirer_id}}" class="col-form-label">Datos Tarjeta</label>
+                <input type="text" t-attf-id="banesco_card_{{acquirer_id}}" required="" maxlength="19" class="form-control" placeholder="Numero"/>
+            </div>
+             <div class="row">
+                <div class="col-sm-8 form-group">
+                    <label t-attf-for="banesco_month_{{acquirer_id}}">Expira (Mes/Año)</label>
+                    <div class="input-group">
+                        <input type="number" t-attf-id="banesco_month_{{acquirer_id}}" placeholder="MM" min="1" max="12" required="" class="form-control"/>
+                        <input type="number" t-attf-id="banesco_year_{{acquirer_id}}" placeholder="YYYY" min="2000" max="2099" required="" class="form-control"/>
+                    </div>
+                </div>
+                <div class="col-sm-4 form-group">
+                    <label t-attf-for="banesco_code_{{acquirer_id}}">CVC</label>
+                    <input type="number" t-attf-id="banesco_code_{{acquirer_id}}" max="9999" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8 form-group">
+                   <label t-attf-for="banesco_name_{{acquirer_id}}">Datos Tarjetahabiente</label>
+                   <div class="input-group">
+                       <input type="text" t-attf-id="banesco_name_{{acquirer_id}}" data-is-required="true" maxlength="19" placeholder="Nombre" class="form-control"/>
+                       <input type="text" t-attf-id="banesco_lastname_{{acquirer_id}}" required="" maxlength="19" placeholder="Apellido" class="form-control"/>
+                   </div>
+                    
+                </div>    
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                   <label t-attf-for="banesco_address_{{acquirer_id}}">Direccion Facturación</label>
+                   <div class="input-group">
+                       <input type="text" t-attf-id="banesco_street_{{acquirer_id}}" data-is-required="true" maxlength="19" placeholder="Calle" class="form-control"/>
+                       <input type="text" t-attf-id="banesco_city_{{acquirer_id}}" required="" maxlength="19" placeholder="Ciudad" class="form-control"/>
+                   </div>
+                    
+                </div>    
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                   <div class="input-group">
+                       <input type="text" t-attf-id="banesco_state_{{acquirer_id}}" required="" maxlength="19" placeholder="Estado o Provincia" class="form-control"/>
+                       <select id="country_id" name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}" t-att-mode="mode[1]">
+                          <option value="">Country...</option>
+                            <t t-foreach="countries" t-as="c">
+                              <option t-att-value="c.id" t-att-selected="c.id == (country and country.id or -1)">
+                                <t t-esc="c.name" />
+                               </option>
+                            </t>
+                       </select>
+                   </div>
+                    
+                </div>    
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                   <div class="input-group">
+                       <input type="text" t-attf-id="banesco_pcode_{{acquirer_id}}" required="" maxlength="19" placeholder="Código Postal" class="form-control"/>
+                       <input type="text" t-attf-id="banesco_email_{{acquirer_id}}" required="" maxlength="19" placeholder="Correo electrónico" class="form-control"/>
+                   </div>
+                    
+                </div>    
+            </div>
+            
+            
+        </div>
+    </template>
+
+</odoo>

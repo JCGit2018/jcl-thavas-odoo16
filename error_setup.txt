@@ -1,0 +1,5 @@
+(400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '-1', 'Strict-Transport-Security': 'max-age=31536000', 'Content-Type': 'application/json', 'Content-Length': '169', 'x-response-time': '56ms', 'X-OPNET-Transaction-Trace': 'fe46352c-588b-4a45-9dea-b01369786f40', 'Connection': 'keep-alive', 'v-c-correlation-id': 'be358b8e-c78f-48b1-af2e-77203e3cdf67'})
+HTTP response body: {"id":"6635542141736940804951","submitTimeUtc":"2022-09-19T02:23:34Z","status":"INVALID_REQUEST","reason":"INVALID_ACCOUNT","message":"Decline - Invalid account number"}
+

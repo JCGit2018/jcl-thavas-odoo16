@@ -1,0 +1,1 @@
+{"_client_reference_information": {"_code": "ClI001", "_partner": {"_developer_id": "7891234", "_solution_id": "89012345"}}, "_payment_information": {"_card": {"_type": "001", "_expiration_month": "12", "_expiration_year": "2025", "_number": "4111111111111111"}}}

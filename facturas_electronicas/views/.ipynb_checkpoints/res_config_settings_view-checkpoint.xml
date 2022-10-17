@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.fe</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='invoicing_settings']" position="after">
+                    <h2 attrs="{'invisible': [('country_code', '!=', 'PA')]}">Factura Electrónica(PA)</h2>
+                    <div class="row mt16 o_settings_container" id="fe_settings" attrs="{'invisible': [('country_code', '!=', 'PA')]}">
+                     <div class="col-12 col-lg-6 o_setting_box" title="Fields required to configure the MX CFDI.">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Proveedor PAC</span>
+                            <div class="text-muted">
+                                Seleccione su PAC.
+                            </div>
+                            <div class="row mt16">
+                                <label string="PAC" for="proveedor_PAC" class="col-lg-3 o_light_label"/>
+                                <field name="proveedor_PAC"/>
+                            </div>
+                        </div>
+                    </div>
+    
+                        
+                     <div class="col-12 col-lg-6 o_setting_box" title="The parameters to configure the PA PAC.">   
+                            <span class="o_form_label">PA PAC</span>
+                            <div class="text-muted">
+                                Configuración PAC
+                            </div>
+                            <div class="row mt16">
+                                <label for="en_produccion" class="col-lg-6 o_light_label"/>
+                                <field name="en_produccion" class="oe_inline"/>
+                                <label for="datos_transporte_logistica" class="col-lg-6 o_light_label"/>
+                                <field name="datos_transporte_logistica" class="oe_inline"/>
+                                
+                            </div>
+                           
+                            <div class="row mt16">
+                                <label for="url_test" class="col-lg-3 o_light_label"/>
+                                <field name="url_test" class="oe_inline"/>
+                            </div>
+                            <div class="row mt16">
+                                <label for="url_prod" class="col-lg-3 o_light_label"/>
+                                <field name="url_prod" class="oe_inline"/>
+                            </div>
+                     </div> 
+                        
+                    </div>
+                </xpath>    
+            </field>
+    </record>
+
+    </data>
+</odoo>
+        

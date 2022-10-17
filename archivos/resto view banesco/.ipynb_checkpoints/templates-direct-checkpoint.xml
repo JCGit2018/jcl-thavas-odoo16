@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="authenticate"  >&lt;!DOCTYPE html&gt;
+   <html t-att="html_data or {}">
+     <head>    
+          <title>Prueba3</title>
+     </head>    
+     <body t-att-class="body_classname">
+       <p id='origin_url' style="display:none;"><t t-esc="origin_url"/></p>  
+       <iframe id="cardinal_collection_iframe" name="collectionIframe" height="10" width="10" style="display: none;"></iframe>  
+       <form id="cardinal_collection_form" method="POST" target="collectionIframe" t-attf-action='{{device_data_collection_url}}'>  
+       <input id="cardinal_collection_form_input" type='hidden' name="JWT" t-attf-value='{{access_token}}'/>
+         </form>    
+     </body>
+       <script>
+           window.onload = function() { 
+           var cardinalCollectionForm = document.querySelector('#cardinal_collection_form');
+           if(cardinalCollectionForm) // form exists 
+              cardinalCollectionForm.submit();
+           }
+
+           window.addEventListener("message", function(event) {
+           var origin = document.querySelector('#origin_url');
+           //console.log(origin.innerHTML);
+           if (event.origin === origin.innerHTML) {
+           console.log(event.data);
+           }
+          }, false);        
+        </script>
+    </html>   
+     <t t-call="payment.payment_status"> </t>
+  </template>
+</odoo>
+
+

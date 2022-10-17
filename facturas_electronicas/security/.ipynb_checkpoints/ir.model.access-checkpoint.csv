@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+facturas_admin,facturas admin,model_facturas_electronicas_facturas_electronicas,group_factura_admin,1,1,1,1
+facturas_lectura,facturas lectura,model_facturas_electronicas_facturas_electronicas,group_factura_users,1,1,1,0
+facturas_consulta,facturas consulta,model_facturas_electronicas_facturas_electronicas,group_factura_consulta,1,0,0,0
+logfacturas_admin,logfacturas admin,model_facturas_electronicas_fe_log,group_logfactura_admin,1,1,1,1
+x_res.state.distrito_users,x_res.state.distrito users,model_x_res_state_distrito,,1,1,1,1
+x_res.state.corregimiento_users,x_res.state.corregimiento users,model_x_res_state_corregimiento,,1,1,1,1
+x_product_cpbs_familia_users,x_product.cpbs.familia users,model_x_product_cpbs_familia,,1,1,1,1
+x_product_cpbs_segmento_users,x_product.cpbs.segmento users,model_x_product_cpbs_segmento,,1,1,1,1

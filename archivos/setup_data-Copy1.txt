@@ -1,0 +1,12 @@
+{'client_reference_information': {'code': 'ClI001',
+                                  'comments': None,
+                                  'partner': {'developer_id': '7891234',
+                                              'solution_id': '89012345'}},
+ 'consumer_authentication_information': {'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhMzYyODk4Zi01ODNkLTRkYjctOTMyZC02NTc4YjEzNzZmZWUiLCJpYXQiOjE2NjE0ODI2MDcsImlzcyI6IjVkZDgzYmYwMGU0MjNkMTQ5OGRjYmFjYSIsImV4cCI6MTY2MTQ4NjIwNywiT3JnVW5pdElkIjoiNjJiNjE4NjI0ZGE3OWQzMzRkY2JlYWMyIiwiUmVmZXJlbmNlSWQiOiJjOGRlODcxMi0zNjcwLTQ0MzQtYWJkYS1mYzhhYjliYmIzYjMifQ.BU3IJt7PRKaVEIZjuX2AWjEugO61qTx3LGulOv1aBQs',
+                                         'device_data_collection_url': 'https://centinelapistag.cardinalcommerce.com/V1/Cruise/Collect',
+                                         'reference_id': 'c8de8712-3670-4434-abda-fc8ab9bbb3b3'},
+ 'error_information': None,
+ 'id': '6614826072216427904951',
+ 'links': None,
+ 'status': 'COMPLETED',
+ 'submit_time_utc': '2022-08-26T02:56:47Z'}

@@ -1,0 +1,1 @@
+{"clientReferenceInformation":{"code":"ClI001"},"errorInformation":{"reason":"INVALID_ACCOUNT","message":"Decline - Invalid account number"},"id":"6568995075176228703955","status":"DECLINED"}

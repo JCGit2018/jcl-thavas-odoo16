@@ -1,0 +1,1 @@
+{'lang': 'es_PA', 'tz': 'America/Panama', 'uid': 2, 'allowed_company_ids': [2], 'params': {'menu_id': 438, 'cids': 2, 'action': 625, 'model': 'facturas_electronicas.facturas_electronicas', 'view_type': 'list'}}

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <data>
+    <record id="invoice_form_view_inherit_fe" model="ir.ui.view">
+        <field name="name">invoice.form.view.inherit.fe</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+           <xpath expr="//field[@name='payment_reference']" position="after">
+             <field name="tipoDocumento" attrs="{'invisible': [ ('move_type', 'not in', ['out_refund','out_invoice'])]}"/>
+             <field name="naturalezaOperacion" attrs="{'invisible': [ ('move_type', 'not in', ['out_refund','out_invoice'])]}"/>
+             <field name="puntoFacturacionFiscal" attrs="{'invisible':[ ('move_type', 'not in', ['out_refund','out_invoice'])]}"/>
+             <field name="destinoOperacion" attrs="{'invisible': [ ('move_type', 'not in', ['out_refund','out_invoice'])]}"/>
+           </xpath>
+           <xpath expr="//field[@name='invoice_date']" position="after">
+             <field name="fechaSalida" attrs="{'invisible': [ ('move_type', 'not in', ['out_refund','out_invoice'])]}"/>
+           </xpath>
+           <xpath expr="//field[@name='edi_state']" position="after">
+             <field name="fechaRecepcionDGI" attrs="{'invisible': [ '|', ('state', '!=', 'posted'),('move_type', 'not in', ['out_refund','out_invoice'])]}"/>
+             <field name="nroProtocoloAutorizacion" attrs="{'invisible': [ '|',('state', '!=', 'posted'), ('move_type', 'not in', ['out_refund','out_invoice'])]}"/>
+             <field name="cufe" attrs="{'invisible': [ '|', ('state', '!=', 'posted'), ('move_type', 'not in', ['out_refund','out_invoice'])]}"/>
+           </xpath>
+           <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='other_info']/group[1]/group[@name='sale_info_group']/field[@name='partner_bank_id']" position="after">
+              <field name="puertoEmbarque"/>
+           </xpath>
+           <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+            <page string="Datos FE" name="studio_page_eKbWE"  attrs="{'invisible': [ ('move_type', 'not in', ['out_refund','out_invoice'])]}">
+                <group name="studio_group_eKbWE">
+                    <group name="studio_group_eKbWE_left">
+                        <field name="tipoOperacion"/>
+                        <field name="tipoEmision"/>
+                        <field name="envioContenedor"/>
+                        <field name="entregaCAFE"/>
+                        <field name="formatoCAFE"/>
+                    </group>
+                    <group name="studio_group_eKbWE_right">
+                        <field name="fechaInicioContingencia"/>
+                        <field name="motivoContingencia"/>
+                        <field name="tipoVenta"/>
+                        <field name="informacionInteres"/>
+                    </group>
+                 </group>
+            </page>
+            <page string="Autorizados para descargar FE" name="studio_page_a3DKm" attrs="{'invisible': [ ('move_type', 'not in', ['out_refund','out_invoice'])]}">
+                <group name="studio_group_a3DKm">
+                   <group name="studio_group_a3DKm_left"></group>
+                   <group name="studio_group_a3DKm_right"/></group>
+                     <field name="autorizados">
+                       <tree string="Contacts" sample="1" multi_edit="1">
+                          <field name="display_name" string="Name"/>
+                          <field name="function" invisible="1"/>
+                          <field name="phone" class="o_force_ltr" optional="show"/>
+                          <field name="email" optional="show"/>
+                          <field name="user_id" optional="show" widget="many2one_avatar_user" domain="[('share', '=', False)]"/>
+                          <field name="activity_ids" optional="show" widget="list_activity"/>
+                          <field name="city" optional="show"/>
+                          <field name="state_id" optional="hide" readonly="1"/>
+                          <field name="country_id" optional="show" readonly="1"/>
+                          <field name="vat" optional="hide" readonly="1"/>
+                          <field name="category_id" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                          <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                          <field name="is_company" invisible="1"/>
+                          <field name="parent_id" invisible="1" readonly="1"/>
+                          <field name="active" invisible="1"/>
+                       </tree>
+                     </field>
+            </page>
+            <page string="Datos autorización FE" name="studio_page_DSsFb" attrs="{'invisible': ['|', ('state', '!=', 'posted'), ('move_type', 'not in', ['out_refund','out_invoice'])]}">
+               <group name="studio_group_DSsFb">
+                   <group name="studio_group_DSsFb_left">
+                       <field name="qr" widget="url" attrs="{'invisible':1}"/>
+                       <field name="codigo" widget="badge"/>
+                       <field name="mensaje"/>
+                   </group>
+                   <group name="studio_group_DSsFb_right">
+                       <field name="qr_image" options="{&quot;size&quot;:[0,180]}" widget="image" attrs="{'invisible': [('qr','=',False)]}" />
+                   </group>
+                </group>
+            </page>
+    
+           </xpath>
+           <xpath expr="//sheet/group//group[last()]" position="inside">
+              <label for="resultado" attrs="{'invisible': [ '|',  ('state', '!=', 'posted'),('move_type', 'not in', ['out_refund','out_invoice'])]}"/>
+                 <div class="o_row" attrs="{'invisible': [ '|', ('state', '!=', 'posted'),('move_type', 'not in', ['out_refund','out_invoice'])]}">
+                    <field name="resultado" attrs="{'invisible': [('state', '!=', 'posted')]}" />
+                    <button name="f_send" string="Reenviar" class="oe_link" type="object" attrs="{'invisible': ['|','|', ('state', '!=', 'posted'),('resultado','=','procesado'),('move_type', 'not in', ['out_refund','out_invoice'])]}"/>
+                 </div>
+           </xpath>
+        </field>    
+    </record>
+  </data>
+</odoo>

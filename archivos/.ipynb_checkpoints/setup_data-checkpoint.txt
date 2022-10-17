@@ -1,0 +1,12 @@
+{'client_reference_information': None,
+ 'consumer_authentication_information': None,
+ 'error_information': {'details': None,
+                       'message': 'Decline - Expired card. You might also '
+                                  'receive this if the expiration date you '
+                                  'provided does not match the date the '
+                                  'issuing bank has on file.',
+                       'reason': 'EXPIRED_CARD'},
+ 'id': '6602343845736206504953',
+ 'links': None,
+ 'status': '201',
+ 'submit_time_utc': '2022-08-11T16:13:04Z'}

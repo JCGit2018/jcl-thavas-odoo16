@@ -1,0 +1,5 @@
+(502)
+Reason: Bad Gateway
+HTTP response headers: HTTPHeaderDict({'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '-1', 'Strict-Transport-Security': 'max-age=31536000', 'Content-Type': 'application/json', 'Content-Length': '162', 'x-response-time': '718ms', 'X-OPNET-Transaction-Trace': '68d0012d-42c4-4ba0-baf7-60d40dcb8227', 'Connection': 'keep-alive', 'v-c-correlation-id': '25195758-e332-4128-87fc-fd46f9929be4'})
+HTTP response body: {"id":"6570376458136111004953","submitTimeUtc":"2022-07-05T16:14:06Z","status":"SERVER_ERROR","reason":"SYSTEM_ERROR","message":"Error - General system failure."}
+

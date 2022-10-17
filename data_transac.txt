@@ -1,0 +1,1 @@
+{'acquirer_id': 32, 'provider': 'banesco', 'reference': 'S00500', 'amount': 197.84, 'currency_id': 16, 'partner_id': 47}

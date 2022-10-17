@@ -1,0 +1,810 @@
+        '''
+        items = self.env['account.move'].sudo().search_read([('documento','=like','INV/%')],['invoice_line_ids'])
+        #lines=  self.env['sale.order.line'].sudo().search_read([],['invoice_lines', 'product_id'])
+        #res = json.dumps(items, ensure_ascii=False, default=str).encode('utf-8')
+        #open('/home/odoo/src/user/items.txt','w').write(items)
+        with open('/home/odoo/src/user/fact.txt', 'w') as temp_file:
+            for item in items:
+                invoice_line = item['invoice_line_ids'][0]
+                line=  self.env['sale.order.line'].sudo().search_read(['invoice_lines','=', invoice_line],['invoice_lines', 'product_id']) 
+                temp_file.write("%s\n" % invoice_line)
+        
+        with open('/home/odoo/src/user/lines.txt', 'w') as temp_file:
+            for line in lines:
+               line['invoice_lines']=line['invoice_lines'][0]
+               temp_file.write("%s\n" % line)
+        '''
+        
+        
+                clientes =  self.env['res.partner'].sudo().search_read([],[])      
+        with open('/home/odoo/src/user/clientes.txt', 'w') as temp_file:
+            for item in clientes:
+                temp_file.write("%s\n" % item)
+
+
+        facturas1 = self.env['account.move'].sudo().search_read([('documento','=like','INV/%')],[])
+        with open('/home/odoo/src/user/fact_total.txt', 'w') as temp_file:
+            for item in facturas1:
+                temp_file.write("%s\n" % item)
+
+
+foram de pago invoice_payment_term_id account.move
+
+e configura en account.payment.term field name
+
+
+        with open('/home/odoo/src/user/factura_send.txt', 'w') as temp_file:
+            temp_file.write("%s\n" % factura)
+
+
+        campos_item = ['name',
+                       'product_id',
+                       'product_uom',
+                       'qty_invoiced',
+                       'price_unit',
+                       'price_subtotal',
+                       'price_tax',
+                       'price_total',
+                       'price_reduce',
+                       'tax_id',
+                       'discount']
+
+
+        item=[{
+        "descripcion": "Esta es una prueba 1",
+        "cantidad": "1.00",
+        "precioUnitario": "20.00",
+        "precioUnitarioDescuento": " ",
+        "precioItem": "20.00",
+        "valorTotal": "21.40",
+        "codigoGTIN": "0",
+        "cantGTINCom": "0.99",
+        "codigoGTINInv": "0",
+        "tasaITBMS": "01",
+        "valorITBMS": "1.40",
+        "cantGTINComInv": "1.00"
+        }, {
+        "descripcion": "Esta es una prueba 2",
+        "cantidad": "1.00",
+        "precioUnitario": "20.00",
+        "precioUnitarioDescuento": " ",
+        "precioItem": "20.00",
+        "valorTotal": "21.40",
+        "codigoGTIN": "0",
+        "cantGTINCom": "0.99",
+        "codigoGTINInv": "0",
+        "tasaITBMS": "01",
+        "valorITBMS": "1.40",
+        "cantGTINComInv": "1.00"
+        }]
+
+
+"pais_prueba":  self.env['res.country'].sudo().search([('id','=', datos_cliente['country_id'][0])])['code'],     
+
+
+            #return cufe +','+ qr + ',' + fechaRecepcionDGI + ',' + nroProtocoloAutorizacion
+
+
+        #if entrada['resultado']!='error':
+
+
+respuesta_completa = {
+    'codigo': '102',
+    'resultado': 'error',
+    'mensaje': 'El documento está duplicado',
+    'cufe': 'FE01200002545436-1-825602-5856022022011100000000010010124090662711',
+    'qr': 'https://dgi-fep-test.mef.gob.pa:40001/Consultas/FacturasPorQR?chFE=FE01200002545436-1-825602-5856022022011100000000010010124090662711&iAmb=2&digestValue=EhHYQ3lq8uY62z2hgSvdMugwlZ+HzU7QxURlQd9WUBQ=&jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaEZFIjoiRkUwMTIwMDAwMjU0NTQzNi0xLTgyNTYwMi01ODU2MDIyMDIyMDExMTAwMDAwMDAwMDEwMDEwMTI0MDkwNjYyNzExIiwiaUFtYiI6IjIiLCJkaWdlc3RWYWx1ZSI6IkVoSFlRM2xxOHVZNjJ6MmhnU3ZkTXVnd2xaK0h6VTdReFVSbFFkOVdVQlE9In0.W75G9T6ujpTR58Bt28TvDqlSOG74JWSDo7y-nCQAm7A',
+    'fechaRecepcionDGI': '2022-02-01T10:28:42',
+    'nroProtocoloAutorizacion': '0000155709723-2-202120220000000000000835',
+    'fechaLimite': None
+}
+
+
+
+respuesta_prueba = {
+    'cufe': 'FE01200002545436-1-825602-5856022022011100000000010010124090662711',
+    'qr': 'https://dgi-fep-test.mef.gob.pa:40001/Consultas/FacturasPorQR?chFE=FE01200002545436-1-825602-5856022022011100000000010010124090662711&iAmb=2&digestValue=EhHYQ3lq8uY62z2hgSvdMugwlZ+HzU7QxURlQd9WUBQ=&jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaEZFIjoiRkUwMTIwMDAwMjU0NTQzNi0xLTgyNTYwMi01ODU2MDIyMDIyMDExMTAwMDAwMDAwMDEwMDEwMTI0MDkwNjYyNzExIiwiaUFtYiI6IjIiLCJkaWdlc3RWYWx1ZSI6IkVoSFlRM2xxOHVZNjJ6MmhnU3ZkTXVnd2xaK0h6VTdReFVSbFFkOVdVQlE9In0.W75G9T6ujpTR58Bt28TvDqlSOG74JWSDo7y-nCQAm7A',
+    'fechaRecepcionDGI': '2022-02-01T10:28:42',
+    'nroProtocoloAutorizacion': '0000155709723-2-202120220000000000000835',    
+}
+
+        return self.env['res.partner'].sudo().search_read([('display_name','=', self.invoice_partner_display_name)],campos_cliente)[0]
+        
+        
+        
+def dict_vehiculo(self,**datos):
+       vehiculo= dict(modalidadOperacionVenta="01",
+                    modalidadOperacionVentaNoDef="",
+                   chasis="123456",
+                   codigoColor="",
+                   codigoNombre="",
+                   potenciaMotor="",
+                   capacidadMotor="",
+                   pesoNeto="",
+                   pesoBruto="",
+                   tipoCombustible="01",
+                   tipoCombustibleNoDef="",
+                   numeroMotor="12345678",
+                   capacidadTraccion="",
+                   distanciaEjes="",
+                   anoModelo = 1984,
+                   anoFabricacion = 1984,
+                   tipoPintura = 1,
+                   tipoPinturaNoDef = 9,
+                   tipoVehiculo = 1,
+                   usoVehiculo = 1,
+                   condicionVehiculo = 1,
+                   capacidadPasajeros = 1)
+       return vehiculo
+
+
+
+
+medicina = dict(nroLote= 12345, cantProductosLote = 4)    
+ #"fechaEmision": "2021-10-14T09:00:00-05:00", buscar o hcar funcion 
+     #tipoSucursal = fields.Char(string='Tipo de Sucrursal') se toma de la cia
+
+
+
+        #with open('/home/odoo/src/user/respuesta8.txt', 'w') as temp_file:
+        #    temp_file.write("%s\n" % self.chequear_resultado(respuesta_prueba)
+
+
+        codigoSucursalEmisor = self.datos_cia(self.invoice_user_id)['codigoSucursalEmisor'],
+        tipoSucursal=self.datos_cia(self.invoice_user_id)['tipoSucursal'],
+
+
+        #factura = self.env['account.move'].search([('name', '=', self.name)])
+        #with open('/home/odoo/src/user/fact_rec.txt', 'w') as temp_file:
+        #    temp_file.write("%s\n" % factura)
+        #factura.write(respuesta_prueba)
+
+
+                
+        '''
+
+        if len(grabadas)==0:    
+            for fact in facturas:
+                fact['invoice_user_id'] = fact['invoice_user_id'][0]
+                
+                fact['amount_total'] = "{0:.2f}".format(fact['amount_total'])
+                fact['amount_untaxed'] = "{0:.2f}".format(fact['amount_untaxed'])
+                self.env['facturas_electronicas.facturas_electronicas'].create(fact)
+        elif len(grabadas)!=len(facturas):
+            facturas[0]['invoice_user_id'] = facturas[0]['invoice_user_id'][0]
+            facturas[0]['amount_total'] = "{0:.2f}".format(facturas[0]['amount_total'])
+            facturas[0]['amount_untaxed'] = "{0:.2f}".format(facturas[0]['amount_untaxed'])
+
+            self.env['facturas_electronicas.facturas_electronicas'].create(facturas[0])
+        '''    
+            	
+        #items = self.env['account.invoice.report'].sudo().search_read([],[])
+        items = self.env['facturas_electronicas.facturas_electronicas'].sudo().search_read([],[])
+        with open('/home/odoo/src/user/fact.txt', 'w') as temp_file:
+            for item in items:
+                temp_file.write("%s\n" % item)
+         vehiculo= dict(modalidadOperacionVenta="01",
+                        modalidadOperacionVentaNoDef="",
+                        chasis="123456",codigoColor="",
+                        codigoNombre="",
+                        potenciaMotor="",
+                        capacidadMotor="",
+                        pesoNeto="",
+                        pesoBruto="",
+                        tipoCombustible="01",
+                        tipoCombustibleNoDef="",
+                        numeroMotor="12345678",
+                        capacidadTraccion="",
+                        distanciaEjes="",
+                        anoModelo = 1984,
+                        anoFabricacion = 1984,
+                        tipoPintura = 1,
+                        tipoPinturaNoDef = 9,
+                        tipoVehiculo = 1,
+                        usoVehiculo = 1,
+                        condicionVehiculo = 1,
+                        capacidadPasajeros = 1)                 
+
+
+datos2= dict(
+tokenEmpresa="dftitvfzogbv_tfhka",
+tokenPassword="Ck:5+5uDuDxf",
+documento=dict(
+codigoSucursalEmisor="5602",
+tipoSucursal="1",
+datosTransaccion=dict({
+"tipoEmision": "01",
+"tipoDocumento": "01",
+"numeroDocumentoFiscal": "0000101",
+"puntoFacturacionFiscal": "001",
+"naturalezaOperacion": "01",
+"tipoOperacion": 1,
+"destinoOperacion": 1,
+"formatoCAFE": 1,
+"entregaCAFE": 1,
+"envioContenedor": 1,
+"procesoGeneracion": 1,
+"tipoVenta": 1,
+"fechaEmision": "2021-10-14T09:00:00-05:00",
+"cliente": {
+"tipoClienteFE": "02",
+"tipoContribuyente": 1,
+"numeroRUC": 89337412,
+"pais": "PA",
+"correoElectronico1": "",
+"razonSocial": "MIGUEL GÓMEZ"
+}
+}),
+listaItems=dict(
+item=[{
+"descripcion": "Esta es una prueba 1",
+"cantidad": "1.00",
+"precioUnitario": "20.00",
+"precioUnitarioDescuento": " ",
+"precioItem": "20.00",
+"valorTotal": "21.40",
+"codigoGTIN": "0",
+"cantGTINCom": "0.99",
+"codigoGTINInv": "0",
+"tasaITBMS": "01",
+"valorITBMS": "1.40",
+"cantGTINComInv": "1.00"
+}, {
+"descripcion": "Esta es una prueba 2",
+"cantidad": "1.00",
+"precioUnitario": "20.00",
+"precioUnitarioDescuento": " ",
+"precioItem": "20.00",
+"valorTotal": "21.40",
+"codigoGTIN": "0",
+"cantGTINCom": "0.99",
+"codigoGTINInv": "0",
+"tasaITBMS": "01",
+"valorITBMS": "1.40",
+"cantGTINComInv": "1.00"
+}]
+),
+totalesSubTotales=dict({
+"totalPrecioNeto": "40.00",
+"totalITBMS": "2.80",
+"totalMontoGravado": "2.80",
+"totalDescuento": "",
+"totalAcarreoCobrado": "",
+"valorSeguroCobrado": "",
+"totalFactura": "42.80",
+"totalValorRecibido": "42.80",
+"vuelto": "0.00",
+"tiempoPago": "1",
+"nroItems": "2",
+"totalTodosItems": "42.80"},
+listaFormaPago=dict(
+formaPago=[
+{"formaPagoFact": "02",
+"descFormaPago": " ",
+"valorCuotaPagada": "21.40"},
+{"formaPagoFact": "02",
+"descFormaPago": " ",
+"valorCuotaPagada": "21.40"}
+]
+)
+)
+)
+)
+
+
+medicina = dict(nroLote= 12345, cantProductosLote = 4) 
+
+
+vehiculo= dict(modalidadOperacionVenta="01",
+                    modalidadOperacionVentaNoDef="",
+                   chasis="123456",
+                   codigoColor="",
+                   codigoNombre="",
+                   potenciaMotor="",
+                   capacidadMotor="",
+                   pesoNeto="",
+                   pesoBruto="",
+                   tipoCombustible="01",
+                   tipoCombustibleNoDef="",
+                   numeroMotor="12345678",
+                   capacidadTraccion="",
+                   distanciaEjes="",
+                   anoModelo = 1984,
+                   anoFabricacion = 1984,
+                   tipoPintura = 1,
+                   tipoPinturaNoDef = 9,
+                   tipoVehiculo = 1,
+                   usoVehiculo = 1,
+                   condicionVehiculo = 1,
+                   capacidadPasajeros = 1)
+
+#from odoo.addons.custom_addon_name.models.py_file_name import IMPORT_LIST
+
+
+campo = fields.Char(
+        string="Nombre",                # Nombre del label del campo
+        compute="_funcion_computada",   # Transforma el campo en un campo computado
+        store=True                      # Si es computado, almacena el resultado
+        select=True                     # Fuerza la indexación del campo
+        readonly=True,                  # Field will be readonly in views
+        inverse="_funcion_inverse"      # Trigger para actualizar
+        required=True,                  # El campo será obligatorio en las vistas
+        translate=True,                 # Traducción disponible
+        help='Ayuda de Campo',          # Texto de Ayuda del Campo al pasar el cursor por encima del mismo
+        company_dependent=True,         # Transforma las columnas en ir.property
+        search='_funcion_busqueda'      # Funcion personalizada para la búsqueda, normalmente empleado junto al computado
+    )
+
+
+{'tokenEmpresa': 'dftitvfzogbv_tfhka', 'tokenPassword': 'Ck:5+5uDuDxf', 'documento': {'codigoSucursalEmisor': '5602', 'tipoSucursal': '1', 'datosTransaccion': {'tipoEmision': '01', 'tipoDocumento': '01', 'numeroDocumentoFiscal': '0000000007', 'puntoFacturacionFiscal': '001', 'naturalezaOperacion': '01', 'tipoOperacion': '1', 'destinoOperacion': '1', 'formatoCAFE': 1, 'entregaCAFE': 1, 'envioContenedor': 1, 'procesoGeneracion': 1, 'tipoVenta': 1, 'fechaEmision': '2022-03-05T00:39:19-05:00', 'cliente': {'tipoClienteFE': '01', 'tipoContribuyente': '2', 'numeroRUC': '29-29-29', 'digitoVerificadorRUC': 56, 'razonSocial': 'Ambiente de pruebas', 'direccion': 'Ave. La Paz, Panama', 'codigoUbicacion': '1-1-1', 'provincia': 'Bocas del Toro', 'distrito': 'Bocas del Toro', 'corregimiento': 'Bocas del Toro', 'tipoIdentificacion': '', 'nroIdentificacionExtranjero': '', 'paisExtranjero': '', 'pais': 'PA', 'telefono1': '9999-9999', 'correoElectronico1': 'usuario@pruebas.com', 'paisOtro': ''}}, 'listaItems': {'item': [{'descripcion': 'Cable Management Box', 'codigo': 'FURN_5555', 'cantidad': '2.00', 'fechaFabricacion': '', 'fechaCaducidad': '', 'precioUnitario': '100.00', 'precioUnitarioDescuento': '5.00', 'precioItem': '190.00', 'valorTotal': '203.30', 'codigoGTIN': '0', 'cantGTINCom': '0.99', 'codigoGTINInv': '0', 'tasaITBMS': '01', 'valorITBMS': '13.30', 'cantGTINComInv': '1.00'}]}, 'totalesSubTotales': {'totalPrecioNeto': '190.00', 'totalITBMS': '13.30', 'totalMontoGravado': '13.30', 'totalDescuento': '', 'totalAcarreoCobrado': '', 'valorSeguroCobrado': '', 'totalFactura': '203.30', 'totalValorRecibido': '203.30', 'vuelto': '0.00', 'tiempoPago': '1', 'nroItems': 1, 'totalTodosItems': '203.30', 'listaFormaPago': {'formaPago': [{'formaPagoFact': '02', 'descFormaPago': ' ', 'valorCuotaPagada': '203.30'}]}}}}
+
+
+
+medicina = dict(nroLote= 12345, cantProductosLote = 4)
+
+def dict_medicina(self,**datos):
+    medicina = dict(nroLote= datos['nroLote'], cantProductosLote = datos['cantProductosLote'])
+    return medicina
+
+     '''
+     def datos_cia(self, id_cia):
+         result = self.env['res.company'].sudo().search([('id','=', id_cia)])
+         with open('/home/odoo/src/user/cia.txt', 'w') as temp_file:
+            temp_file.write("%s\n" % result['codigoSucursalEmisor'])
+         return result   
+     '''
+        #codigoSucursalEmisor =  self.datos_cia(factura['company_id'][0])['codigoSucursalEmisor'],
+        #tipoSucursal = self.datos_cia(factura['company_id'][0])['tipoSucursal'],
+
+
+     '''
+     def dict_medicina(self, producto):
+            
+         medicina = dict(nroLote = producto.nroLote , cantProductosLote = producto.cantProductosLote) 
+         return medicina
+     
+     
+     def dict_vehiculo(self, producto):
+         
+         vehiculo= dict(modalidadOperacionVenta = producto.modalidadOperacionVenta,
+                   modalidadOperacionVentaNoDef = producto.modalidadOperacionVentaNoDef,
+                   chasis = producto.chasis,
+                   codigoColor = producto.codigoColor,
+                   colorNombre =  producto.colorNombre,
+                   potenciaMotor = producto.potenciaMotor,
+                   capacidadMotor = producto.capacidadMotor,
+                   pesoNeto = producto.pesoNeto,
+                   pesoBruto = producto.pesoBruto,
+                   tipoCombustible = producto.tipoCombustible,
+                   tipoCombustibleNoDef = producto.tipoCombustibleNoDef,
+                   numeroMotor = producto.numeroMotor,
+                   capacidadTraccion = producto.capacidadTraccion,
+                   distanciaEjes = producto.distanciaEjes,
+                   anoModelo = producto.anoModelo,
+                   anoFabricacion = producto.anoFabricacion,
+                   tipoPintura = producto.tipoPintura,
+                   tipoPinturaNodef = producto.tipoPinturaNodef,
+                   tipoVehiculo = producto.tipoVehiculo,
+                   usoVehiculo = producto.usoVehiculo,
+                   condicionVehiculo = producto.condicionVehiculo,
+                   capacidadPasajeros = producto.capacidadPasajeros)   
+
+         return vehiculo
+      '''  
+
+
+     '''
+    
+     def busca_cliente(self):
+        campos_cliente = ['tipoClienteFE',
+                          'email',
+                          'tipoContribuyente',
+                          'numeroRUC',
+                          'digitoVerificadorRUC',
+                          'phone',
+                          'country_code',
+                          'contact_address_complete',
+                          "codigoUbicacion",
+                          "provincia",
+                          "distrito",
+                          "corregimiento",
+                          "tipoIdentificacion",
+                          "nroIdentificacionExtranjero",
+                          "paisExtranjero"]
+        return self.env['res.partner'].sudo().search_read([('display_name','=', self.invoice_partner_display_name)],campos_cliente)[0]
+     ''' 
+     
+     
+        datos = dict(
+        tokenEmpresa="dftitvfzogbv_tfhka",
+        tokenPassword="Ck:5+5uDuDxf",
+        documento=dict(
+        codigoSucursalEmisor =  self.env['res.company'].datos_cia(factura['company_id'][0])['codigoSucursalEmisor'],    
+        tipoSucursal = self.env['res.company'].datos_cia(factura['company_id'][0])['tipoSucursal'],    
+        datosTransaccion=dict({
+        "tipoEmision": factura["tipoEmision"],
+        "tipoDocumento": factura["tipoDocumento"],
+        "numeroDocumentoFiscal": self.documento,
+        "puntoFacturacionFiscal": factura["puntoFacturacionFiscal"],
+        "naturalezaOperacion": factura["naturalezaOperacion"],
+        "tipoOperacion": factura["tipoOperacion"],
+        "destinoOperacion": factura["destinoOperacion"],
+        "formatoCAFE": 1,
+        "entregaCAFE": 1,
+        "envioContenedor": factura["envioContenedor"],
+        "procesoGeneracion": factura["procesoGeneracion"],
+        "tipoVenta": factura["tipoVenta"],
+        "fechaEmision": fecha_factura,
+        "cliente": {
+        "tipoClienteFE": datos_cliente["tipoClienteFE"],
+        "tipoContribuyente":datos_cliente["tipoContribuyente"],
+        "numeroRUC": datos_cliente["numeroRUC"],
+         #datos obligatorios para contribuyente
+        "digitoVerificadorRUC" : int(datos_cliente["digitoVerificadorRUC"]),
+        "razonSocial": self.invoice_partner_display_name,
+        "direccion": datos_cliente['contact_address_complete'],
+        "codigoUbicacion": datos_cliente['codigoUbicacion'] if datos_cliente['codigoUbicacion'] else '',
+        "provincia": datos_cliente['provincia'] if datos_cliente['provincia'] else '',
+        "distrito": datos_cliente['distrito'] if datos_cliente['distrito'] else '',
+        "corregimiento":datos_cliente['corregimiento'] if datos_cliente['distrito'] else '',
+        #"tipoIdentificacion": datos_cliente['tipoIdentificacion'] if datos_cliente['tipoIdentificacion'] else '',
+        #"nroIdentificacionExtranjero": datos_cliente['nroIdentificacionExtranjero'] if datos_cliente['nroIdentificacionExtranjero'] else '',
+        #"paisExtranjero": datos_cliente['paisExtranjero'] if datos_cliente['paisExtranjero'] else '', 
+        "pais": "PA",
+        "telefono1":datos_cliente["phone"] if datos_cliente['phone'] else '',
+        "correoElectronico1": datos_cliente["email"] if datos_cliente['email'] else '',
+        #"paisOtro": ""
+        }
+        }),
+        listaItems=dict(
+        item = self.busca_items()
+        ),
+        totalesSubTotales=dict({
+        "totalPrecioNeto": "{0:.2f}".format(self.totalPrecioNeto),
+        "totalITBMS": "{0:.2f}".format(self.totalITBMS),
+        "totalMontoGravado":  "{0:.2f}".format(self.totalITBMS), #se asume ISC cero
+        "totalDescuento": "",
+        "totalAcarreoCobrado": "",
+        "valorSeguroCobrado": "",
+        "totalFactura": "{0:.2f}".format(self.valorTotal),
+        "totalValorRecibido": "{0:.2f}".format(self.valorTotal),
+        "vuelto": "0.00",
+        "tiempoPago": "1",
+        "nroItems": self.nroItems,
+        "totalTodosItems": "{0:.2f}".format(self.totalTodosItems)},
+        listaFormaPago=dict(
+        formaPago=[
+        {"formaPagoFact": "02",
+        "descFormaPago": " ",
+        "valorCuotaPagada": "{0:.2f}".format(self.valorTotal)
+        }
+        ]
+        )
+        )
+        )
+        )
+     
+     
+     1: . 2: El receptor exceptúa al emisor de la obligatoriedad de envío del contenedor. El emisor podrá decidir entregar el contenedor, por cualquier razón, en momento posterior a la autorización de uso, pero no era esta su intención en el momento de la emisión de la FE.
+    
+    #envioContenedor = 1,    
+            #tipoClienteFE =  '01',    
+
+        #tipoContribuyente = 2,    #no informar si es extranjero
+
+        #numeroRUC =  '2545436-1-825602',    
+
+        #digitoVerificadorRUC = 58,    
+
+        #razonSocial =  'THAVAS, S.A.',
+
+
+     licVehiculoCarga =	fields.Char(string='Licencia del vehículo de carga',
+                                    help= 'Licencia del vehículo de carga')
+                                   
+     razonSocialTransportista =	fields.Char(string='Nombre o Razón social del transportista',
+                                            help= 'Nombre o Razón social del transportista')
+                                            
+     tipoRucTransportista =  fields.Selection([('1', 'Natural'), ('2', 'Jurídico')], string='Tipo RUC Transportista') 	
+                                            
+     rucTransportista = fields.Char(string='RUC del Transportista.',
+                                  help= 'RUC del Transportista')		
+                                            
+     digitoVerifRucTransportista =	fields.Integer(string='Dígito Verificador RUC Transportista',
+                                                   help= 'Dígito Verificador RUC Transportista. Debe ser calculado en base al algoritmo del RUC publicado por la DGI.')
+
+
+
+ #tipoRucEntrega = fields.Selection([('1', 'Natural'), ('2', 'Jurídico')], string='Tipo RUC entrega') 
+    
+    #numeroRucEntrega = fields.Char(string='RUC Entrega', help= 'RUC del receptor')
+    
+    #digitoVerifRucEntrega =	fields.Char(string='Digito Verif RUC Entrega', help= 'Debe ser calculado en base al algoritmo del RUC publicado por la DGI')
+    
+    #razonSocialEntrega = fields.Char(string='Razon Social Entrega', help= 'Razón Social (Persona Jurídica) o Nombre y Apellido (Persona Natural) del local de la entrega')
+    
+    #direccionEntrega = fields.Text(string='Dirección Entrega', help= 'Urbanización, Calle, Casa/Edificio, Número de Local. Dirección del local de la entrega')
+    
+    #codigoUbicacionEntrega	= fields.Char(string='Codigo Ubicacion Entrega', help= 'Código compuesto de la ubicación')
+	
+    #corregimientoEntrega = fields.Char(string='Corregimiento Entrega', help= 'Corregimiento donde se ubica el local de la entrega, según Catálogo')
+    
+    #distritoEntrega = fields.Char(string='Distrito Entrega', help= 'Distrito donde se ubica el local de la entrega, según Catálogo')
+    
+    #provinciaEntrega =	fields.Char(string='Povincia Entrega', help= 'Provincia donde se ubica el local de la entrega, según Catálogo')
+    
+    
+        '''        
+          def write(self, values):
+         res = super(ProductTemplate, self).write(values)
+         #raise ValidationError('No se pueden guardar los cambios')
+         return res      
+       
+     '''  
+     
+             # usar libreria re reg = re.compile("^\d{3}\d{3}\d{4}")
+    '''
+        dictcliente = dict( 
+        tipoClienteFE =  datos_cliente["tipoClienteFE"],
+        tipoContribuyente = datos_cliente["tipoContribuyente"],
+        numeroRUC =  datos_cliente["numeroRUC"],
+         #datos obligatorios para contribuyente
+        digitoVerificadorRUC =  int(datos_cliente["digitoVerificadorRUC"]),
+        razonSocial =  self.invoice_partner_display_name,
+        direccion =  datos_cliente['contact_address_complete'],
+        codigoUbicacion =  datos_cliente['codigoUbicacion'] if datos_cliente['codigoUbicacion'] else '',
+        provincia =  datos_cliente['provincia'] if datos_cliente['provincia'] else '',
+        distrito =  datos_cliente['distrito'] if datos_cliente['distrito'] else '',
+        corregimiento = datos_cliente['corregimiento'] if datos_cliente['distrito'] else '',
+        #"tipoIdentificacion": datos_cliente['tipoIdentificacion'] if datos_cliente['tipoIdentificacion'] else '',
+        #"nroIdentificacionExtranjero": datos_cliente['nroIdentificacionExtranjero'] if datos_cliente['nroIdentificacionExtranjero'] else '',
+        #"paisExtranjero": datos_cliente['paisExtranjero'] if datos_cliente['paisExtranjero'] else '', 
+        pais = "PA",
+        telefono1 = datos_cliente["phone"] if datos_cliente['phone'] else '',
+        correoElectronico1 = datos_cliente["email"] if datos_cliente['email'] else '',
+        #"paisOtro": ""
+        )
+
+    
+    '''    
+    
+    
+    
+    diccionario cliente actual
+    dict( 
+        tipoClienteFE =  datos_cliente["tipoClienteFE"],
+        tipoContribuyente = 2 if datos_cliente["company_type"] =='company' else 1 ,
+        numeroRUC =  datos_cliente["vat"],
+         #datos obligatorios para contribuyente
+        digitoVerificadorRUC = datos_cliente["digitoVerificadorRUC"] if datos_cliente["digitoVerificadorRUC"] else '' ,
+        razonSocial =  self.invoice_partner_display_name if self.invoice_partner_display_name else '',
+        direccion =  datos_cliente['contact_address_complete'],
+        codigoUbicacion =  datos_cliente['codigoUbicacion'] if datos_cliente['codigoUbicacion'] else '',
+        provincia =  datos_cliente['provincia'] if datos_cliente['provincia'] else '',
+        distrito =  datos_cliente['distrito'] if datos_cliente['distrito'] else '',
+        corregimiento = datos_cliente['corregimiento'] if datos_cliente['distrito'] else '',
+            
+        # clientes del extranjero    
+        #"tipoIdentificacion": datos_cliente['tipoIdentificacion'] if datos_cliente['tipoIdentificacion'] else '',
+        #"nroIdentificacionExtranjero": datos_cliente['nroIdentificacionExtranjero'] if datos_cliente['nroIdentificacionExtranjero'] else '',
+        #"paisExtranjero": datos_cliente['paisExtranjero'] if datos_cliente['paisExtranjero'] else '', 
+        pais = "PA",
+        #telefono1 = datos_cliente["phone"] if datos_cliente['phone'] else '',
+        #telefono1 = datos_cliente["phone"][4 :]  if datos_cliente['phone']startswith('+') else datos_cliente['phone'],
+        correoElectronico1 = datos_cliente["email"] if datos_cliente['email'] else '',
+        #paisOtro = datos_cliente["paisOtro"] if datos_cliente["paisOtro"] else ''
+        )
+        
+        
+        
+             '''
+     def busca_items(self):
+        self.totalPrecioNeto = 0
+        self.nroItems = 0
+        self.totalITBMS = 0
+        self.totalTodosItems = 0
+        self.valorTotal = 0
+        #tipo_producto = ''
+        items = self.env['account.move'].sudo().search_read([('name','=', self.name)],['invoice_line_ids'])
+        result=[]
+        invoice_line = items[0]['invoice_line_ids']
+        for lines in invoice_line:
+            linea_factura = self.env['sale.order.line'].sudo().search([('invoice_lines','=', lines)])
+            linea_factura2  = self.env['sale.order.line'].sudo().search_read([('invoice_lines','=', lines)],['product_template_id'])
+            producto = self.env['product.template'].sudo().search([('id','=', linea_factura2[0]['product_template_id'][0])])
+            tipo_producto = producto.categ_id.name
+            precioItem1 = linea_factura.qty_invoiced * (linea_factura.price_unit - (linea_factura.discount/100) * linea_factura.price_unit)
+            valorTotal1 = precioItem1 + linea_factura.price_tax
+            self.valorTotal= valorTotal1 + self.valorTotal
+            salida = dict(descripcion= producto.name,
+                          codigo = producto.default_code if producto.default_code else '' ,
+                          #unidadMedida = producto.uom_name,
+                          cantidad = "{0:.2f}".format(linea_factura.qty_invoiced), # ver con product_uom_qty 
+                          fechaFabricacion =  producto.fechaFabricacion if producto.fechaFabricacion else '',
+                          fechaCaducidad =  producto.fechaCaducidad if producto.fechaCaducidad else '',
+                          #codigoCPBSAbrev = producto.codigoCPBSAbrev if producto.codigoCPBSAbrev else '',
+                          #codigoCPBS = producto.codigoCPBS if producto.codigoCPBS else '',
+                          precioUnitario = "{0:.2f}".format(linea_factura.price_unit),
+                          precioUnitarioDescuento = "{0:.4f}".format((linea_factura.discount/100) * linea_factura.price_unit),
+                          precioItem = "{0:.4f}".format(precioItem1),
+                          valorTotal = "{0:.4f}".format(valorTotal1),
+                          codigoGTIN = "0",
+                          cantGTINCom= "0.00",
+                          codigoGTINInv = "0",
+                          tasaITBMS = "01",
+                          valorITBMS =  "{0:.2f}".format(linea_factura.price_tax),
+                          cantGTINComInv = "0.00"
+                          
+                         )
+            if tipo_producto == 'Medicinas':
+                salida['medicina'] = self.env['product.template'].dict_medicina(producto)
+            elif tipo_producto == 'Vehiculos':
+                salida['vehiculo'] = self.env['product.template'].dict_vehiculo(producto)
+           
+            self.totalPrecioNeto = self.totalPrecioNeto + linea_factura.price_reduce * linea_factura.qty_invoiced
+            #self.nroItems = self.nroItems + linea_factura.qty_invoiced todos los items
+            self.nroItems = self.nroItems + 1 # lineas_factura
+                          
+            self.totalITBMS = self.totalITBMS + linea_factura.price_tax
+            self.totalTodosItems = self.totalTodosItems + linea_factura.price_total
+            result.append(salida)
+            with open('/home/odoo/src/user/itemfact.txt', 'w') as temp_file:
+                temp_file.write("%s\n" % result)    
+                
+        return result
+        
+     '''   
+        #infoLogistica = self.env["stock.picking"].dict_logistica(self.name,factura['invoice_origin'], True),
+        #infoEntrega = self.env["stock.picking"].dict_entrega(self.name,factura['invoice_origin'], True),   
+
+
+        #self.aplica_entrega= False
+        
+        # si existe el telfono procesar . Falta procesar con el regex 
+
+       # if datos_cliente['phone']:
+                
+       #     telefono = datos_cliente["phone"][4 :]  if datos_cliente['phone'].startswith('+') else datos_cliente['phone']
+            
+       #     datos['documento']['datosTransaccion']['cliente']['telefono1'] = telefono
+
+
+'''
+Entrega
+
+String	SI	N|1	TipoRucEntrega	Tipo de Contribuyente 1:Natural. 2:Jurídico.
+String	SI	AN|5..20	NumeroRucEntrega	RUC del receptor.
+String	SI	AN|2	DigitoVerifRucEntrega	Debe ser calculado en base al algoritmo del RUC publicado por la DGI.
+String	SI	An|2..100	RazonSocialEntrega	Razón Social (Persona Jurídica) o Nombre y Apellido (Persona Natural) del local de la entrega.
+String	SI	AN|100	DireccionEntrega	Urbanización, Calle, Casa/Edificio, Número de Local. Dirección del local de la entrega.
+String	SI	AN|8	CodigoUbicacionEntrega	Código compuesto de la ubicación.
+String	SI	AN|50	CorregimientoEntrega	Corregimiento donde se ubica el local de la entrega, según Catálogo.
+String	SI	AN|50	DistritoEntrega	Distrito donde se ubica el local de la entrega, según Catálogo.
+String	SI	AN|50	ProvinciaEntrega	Provincia donde se ubica el local de la entrega, según Catálogo.
+String	SI	N|7..12	TelefonoEntrega	Teléfono de contacto del local de la entrega. Formatos aceptables 999-9999 ó 9999-9999
+String	SI	N|7..12	TelefonoEntregaAlt	Teléfono de contacto adicional, o alterno del local de la entrega. Formatos aceptables 999-9999 ó 9999-9999
+
+logistica
+
+String	NO	N|1..3	NroVolumenes	Número de volúmenes
+String	NO	N|1..4|2..6	PesoCarga	Peso total de la carga.
+String	NO	N|1	UnidadPesoTotal	1:g. 2:kg. 3:toneladas. 4:libras.
+String	NO	AN|6	LicVehiculoCarga	Licencia del vehículo de carga.
+String	SI	AN|15..100	RazonSocialTransportista	Nombre o Razón social del transportista.
+String	SI	N|1	TipoRucTransportista	1:Natural. 2:Jurídico.
+String	SI	AN|5..20	RucTransportista	RUC del Transportista.
+String	SI	AN|2	DigitoVerifRucTransportista	Dígito Verificador RUC Transportista. Debe ser calculado en base al algoritmo del RUC publicado por la DGI.
+String	NO	AN|0..5000	InfoLogisticaEmisor	Información de interés del emisor con respeto a logística.
+
+'''
+
+
+  
+    '''
+        def name_get(self):
+        if context is None:
+            context = {}
+        res = []
+        if context.get('special_display_name', False):
+           for record in self:
+              res.append(record.id, rec.YOurFieldYouWantToShow)
+        else:
+           for record in self:
+              res.append(record.id, record.corregimiento)
+        return res
+
+    def name_get(self):
+        result = []
+        for record in self:
+            if self.env.context.get('custom_search', False):
+                # Only goes off when the custom_search is in the context values.
+                result.append((record.id, record.corregimiento))
+            else:
+                result.append((record.id, record.distrito))
+        return result
+
+    
+    '''
+    
+        @api.constrains('tipoClienteFE')
+    def check_tipoCliente(self):
+        '''   
+        if self.tipoClienteFE =='01' or self.tipoClienteFE =='03' :
+            if not self.digitoVerificadorRUC  or  not self.codigoUbicacion or not  self.provincia or not  self.distrito  or not  self.corregimiento :                 
+                raise ValidationError(' Atención: "digitoVerificadorRUC", "codigoUbicacion", "provincia"."distrito","corregimiento" deben ser colocados.')
+                
+        if self.tipoClienteFE =='04':
+            if not self.tipoIdentificacion  or  not self.nroIdentificacionExtranjero:    
+                raise ValidationError(' Atención, "Tipo Identificacion", "Nro Identificacion Extranjero" deben ser colocados.')
+        '''        
+                
+    @api.constrains('phone')
+    def check_phone(self):
+        pass #se deb usar expresion regular 999-9999  o 9999-9999 ^\d{3,4}\D{1}\d{4}
+
+
+    #paisExtranjero = fields.Char(string='Pais Extranjero', default="")
+    #paisOtro = fields.Char(string='Pais Otro')
+    #distrito = fields.Many2one('facturas_electronicas.location',string='Distrito1', related ='distrito') 
+    #distrito1 = fields.Char(string='Distrito1',comodel_name='facturas_electronicas.location', related ='distrito')
+    #corregimiento1 = fields.Char(string='Corregimiento1',comodel_name='facturas_electronicas.location', related ='corregimiento')        
+
+
+    #tipoContribuyente = fields.Selection([('1', 'Natural'), ('2', 'Jurídico')], string='Tipo contribuyente', default='1')
+    #numeroRUC = fields.Char(string='RUC')
+
+
+#items_en_factura = self.busca_items()
+
+#self.env['account.move.line'].busca_items_factura(self.name)
+
+
+                          #tasaITBMS =  linea_factura.tax_ids[0].clasificacion_DGI,
+
+
+             #fact['amount_total'] = "{0:.2f}".format(fact['amount_total'])
+
+
+     #documento = fields.Char(string='Documento' ,readonly = True)
+     #documento = fields.Char(string='Documento',comodel_name='account.move', related ='name')
+
+        #"totalDescuento":  "{0:.2f}".format(self.totalDescuento),
+        #"totalAcarreoCobrado": "",
+        #"valorSeguroCobrado": "",
+        #"tiempoPago": factura_objeto.invoice_payment_term_id.tiempoPago.strip(),
+    #documento = fields.Char(string='Documento',comodel_name='account.move', related ='name')
+ #amount_total = fields.Monetary(string='Monto',readonly = True, currency_field='')
+ 
+             #precioItem1 = linea_factura.price_subtotal
+
+
+    
+    '''
+    result=[]
+    for factura in reversed_entry_id:
+    
+        documento["fechaEmisionDocFiscalReferenciado"] =  ''
+        documento["cufeFEReferenciada"] = factura.cufe
+        documento["nroFacturaPapel"] = factura.name
+        result.append(documento)
+        nroFacturaImpFiscal no va este campo
+        self.tz_offset offsedt del usuario
+    '''
+             with open('/home/odoo/src/user/cia.txt', 'w') as temp_file:
+            temp_file.write("%s\n" % result['codigoSucursalEmisor'])
+class Location(models.Model):
+    
+    _name = 'facturas_electronicas.location'
+    _description = 'Ubicaciones localización Panama'
+    
+    #rec_name='corregimiento' #para visualizar el campo en la vista
+    name = fields.Char(string='Distrito/Corregimiento' )
+    codigo = fields.Char(string='Codigo Ubicacion')
+    #provincia = fields.Char(string='Provincia' )
+    #cod_provincia = fields.Char(string='Código Provincia' )
+    #distrito = fields.Char(string='Distrito' )
+    #cod_distrito = fields.Char(string='Código Distrito' )
+    #corregimiento = fields.Char(string='Corregimiento' )
+    #cod_corregimiento = fields.Char(string='Código Corregimiento' )
+    state_id= fields.Many2one(
+        'res.country.state', 'Provincia') 

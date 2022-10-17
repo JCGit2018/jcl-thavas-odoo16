@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="group_factura_admin" model="res.groups">
+       <field name="name">Factura / Admin</field>
+    </record>
+
+    <record id="group_factura_users" model="res.groups">
+       <field name="name">Factura / Users</field>
+    </record>
+
+    <record id="group_factura_consulta" model="res.groups">
+       <field name="name">Factura / Consulta</field>
+    </record>
+
+    <record id="group_logfactura_admin" model="res.groups">
+       <field name="name">Logs de Factura / Admin</field>
+    </record>
+
+
+</odoo>  
+    

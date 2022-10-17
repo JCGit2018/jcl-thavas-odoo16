@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="authenticate"  >&lt;!DOCTYPE html&gt;
+   <html t-att="html_data or {}">
+     <head>    
+     </head>    
+     <body t-att-class="body_classname">
+        <form id='powertranz_spi' name='powertranz_spi' method="POST"  t-attf-action='{{host_url}}'>
+          <input type="hidden" name='SpiToken' id='SpiToken' t-attf-value='{{spi_token}}'/>
+          <input name='browserLanguage' id='browserLanguage' type='hidden' value=''/>
+          <input name='browserWidth' id='browserWidth' type='hidden' value=''/>
+          <input name='browserHeight' id='browserHeight' type='hidden' value=''/>
+          <input name='browserTimeZone' id='browserTimeZone' type='hidden' value=''/>
+          <input name='browserJavaEnabled' id='browserJavaEnabled' type='hidden' value=''/>
+          <input name='browserJavascriptEnabled' id='browserJavascriptEnabled' type='hidden' value=''/>
+          <input  name='browserColorDepth' id='browserColorDepth' type='hidden' value=''/>
+        </form>    
+     </body>
+       <script>
+           function GetBrowserInfo(){
+             const n=window&amp;&amp;window.screen?window.screen.width:'',
+             e=window&amp;&amp;window.screen?window.screen.height:'',
+             w=window&amp;&amp;window.screen?window.screen.colorDepth:'',
+             o=window&amp;&amp;window.navigator?window.navigator.userAgent:'',
+             i=!(!window||!window.navigator)&amp;&amp;navigator.javaEnabled();
+             let a='';
+             return window&amp;&amp;window.navigator&amp;&amp;(a=window.navigator.language?window.navigator.language:window.navigator.browserLanguage),
+
+           {
+             screenWidth:n,
+             screenHeight:e,
+             colorDepth:w,
+             userAgent:o,
+             timeZoneOffset:(new Date).getTimezoneOffset(),
+             language:a,javaEnabled:i,
+             javascriptEnabled:!0
+           }
+           }
+       </script>
+       <script>
+           function GetBrowserInfoAndSubmit(){
+                var e=GetBrowserInfo();
+                document.getElementById('browserLanguage').value=e.language,
+                document.getElementById('browserWidth').value=e.screenWidth,
+                document.getElementById('browserHeight').value=e.screenHeight,
+                document.getElementById('browserTimeZone').value=e.timeZoneOffset,
+                document.getElementById('browserJavaEnabled').value=e.javaEnabled,
+                document.getElementById('browserJavascriptEnabled').value=e.javascriptEnabled,
+                document.getElementById('browserColorDepth').value=e.colorDepth,
+                document.forms[0].submit()
+           }
+           GetBrowserInfoAndSubmit();
+       </script>
+    </html>   
+    
+  </template>
+</odoo>
+
+

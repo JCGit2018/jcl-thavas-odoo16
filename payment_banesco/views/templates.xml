@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="authenticate"  >&lt;!DOCTYPE html&gt;
+   <html t-att="html_data or {}">
+     <head>    
+          <title>Confirmar Hosted</title>
+     </head>    
+     <body t-att-class="body_classname">
+        <form id="cardinal_collection_form" method="POST" t-attf-action='{{host_url}}'>  
+          <input type="hidden" id="access_key" name="access_key" t-attf-value='{{access_key}}'/>
+          <input type="hidden" id="profile_id" name="profile_id" t-attf-value='{{profile_id}}'/>
+          <input type="hidden" id="transaction_uuid" name="transaction_uuid" t-attf-value='{{transaction_uuid}}'/>
+          <input type="hidden" id="signed_field_names" name="signed_field_names" t-attf-value='{{signed_field_names}}' />
+          <input type="hidden" id="unsigned_field_names" name="unsigned_field_names" value=""/>
+          <input type="hidden" id="signed_date_time" name="signed_date_time" t-attf-value='{{signed_date_time}}'/>
+          <input type="hidden" id="locale" name="locale" t-attf-value='{{locale}}'/>
+          <input type="hidden" id="transaction_type" name="transaction_type" t-attf-value='{{transaction_type}}'/>
+          <input type="hidden" id="reference_number" name="reference_number" t-attf-value='{{reference_number}}'/>
+          <input type="hidden" id="amount" name="amount" t-attf-value='{{amount}}'/>
+          <input type="hidden" id="currency" name="currency" value="USD"/>
+          <input type="hidden" id="submit2" name="submit2" value="Submit2"/>  
+            
+          <input type="hidden" id='bill_to_forename' name='bill_to_forename' t-attf-value='{{bill_to_forename}}'/>
+          <input type="hidden" id="bill_to_surname" name="bill_to_surname" t-attf-value='{{bill_to_surname}}'/>
+          <input type="hidden" id='bill_to_email' name='bill_to_email' t-attf-value='{{bill_to_email}}'/>
+          <input type="hidden" id='bill_to_address_line1' name='bill_to_address_line1' t-attf-value='{{bill_to_address_line1}}'/>
+          <input type="hidden" id='bill_to_address_city' name='bill_to_address_city' t-attf-value='{{bill_to_address_city}}'/>
+          <input type="hidden" id='bill_to_address_postal_code' name='bill_to_address_postal_code' t-attf-value='{{bill_to_address_postal_code}}'/>
+          <input type="hidden" id='bill_to_address_state' name='bill_to_address_state' t-attf-value='{{bill_to_address_state}}'/>
+          <input type="hidden" id='bill_to_address_country' name='bill_to_address_country' t-attf-value='{{bill_to_address_country}}'/>
+          <input type="hidden" id='bill_to_phone' name='bill_to_phone' t-attf-value='{{bill_to_phone}}'/>
+
+          <input type="hidden" id='ship_to_forename' name='ship_to_forename' t-attf-value='{{ship_to_forename}}'/>
+          <input type="hidden" id="ship_to_surname" name="ship_to_surname" t-attf-value='{{ship_to_surname}}'/>
+          <input type="hidden" id='ship_to_email' name='ship_to_email' t-attf-value='{{ship_to_email}}'/>
+          <input type="hidden" id='ship_to_address_line1' name='ship_to_address_line1' t-attf-value='{{ship_to_address_line1}}'/>
+          <input type="hidden" id='ship_to_address_city' name='ship_to_address_city' t-attf-value='{{ship_to_address_city}}'/>
+          <input type="hidden" id='ship_to_address_postal_code' name='ship_to_address_postal_code' t-attf-value='{{ship_to_address_postal_code}}'/>
+          <input type="hidden" id='ship_to_address_state' name='ship_to_address_state' t-attf-value='{{ship_to_address_state}}'/>
+          <input type="hidden" id='ship_to_address_country' name='ship_to_address_country' t-attf-value='{{ship_to_address_country}}'/>
+          <input type="hidden" id='ship_to_phone' name='ship_to_phone' t-attf-value='{{ship_to_phone}}'/>
+  
+            
+            
+          <input type="hidden" id="merchant_defined_data1" name="merchant_defined_data1" t-attf-value='{{merchant_defined_data1}}'/>  
+          <input type="hidden" id="merchant_defined_data2" name="merchant_defined_data2" t-attf-value='{{merchant_defined_data2}}'/>
+          <input type="hidden" id="merchant_defined_data3" name="merchant_defined_data3" t-attf-value='{{merchant_defined_data3}}'/>
+          <input type="hidden" id="merchant_defined_data4" name="merchant_defined_data4" t-attf-value='{{merchant_defined_data4}}'/>
+          <input type="hidden" id="merchant_defined_data5" name="merchant_defined_data5" t-attf-value='{{merchant_defined_data5}}'/>
+          <input type="hidden" id="merchant_defined_data6" name="merchant_defined_data6" t-attf-value='{{merchant_defined_data6}}'/>
+          <input type="hidden" id="merchant_defined_data7" name="merchant_defined_data7" t-attf-value='{{merchant_defined_data7}}'/> 
+          <input type="hidden" id="merchant_defined_data8" name="merchant_defined_data8" t-attf-value='{{merchant_defined_data8}}'/>
+          <input type="hidden" id="merchant_defined_data10" name="merchant_defined_data10" t-attf-value='{{merchant_defined_data10}}'/>  
+          <input type="hidden" id="merchant_defined_data24" name="merchant_defined_data24" t-attf-value='{{merchant_defined_data24}}'/>
+          <input type="hidden" id="merchant_defined_data28" name="merchant_defined_data28" t-attf-value='{{merchant_defined_data28}}'/>  
+            
+          <input type="hidden" id="override_custom_cancel_page" name="override_custom_cancel_page" t-attf-value='{{override_custom_cancel_page}}'/>  
+          <input type="hidden" id="override_custom_receipt_page" name="override_custom_receipt_page" t-attf-value='{{override_custom_receipt_page}}'/>  
+            
+          <input type="hidden" id="signature" name="signature" t-attf-value='{{signature}}'/>
+            
+        </form>    
+     </body>
+       <script>
+           window.onload = function() { 
+           var cardinalCollectionForm = document.querySelector('#cardinal_collection_form');
+           if(cardinalCollectionForm) // form exists 
+              cardinalCollectionForm.submit();
+           }
+
+        </script>
+    </html>   
+    
+  </template>
+</odoo>
+
+

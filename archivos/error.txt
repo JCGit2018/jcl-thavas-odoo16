@@ -1,0 +1,5 @@
+(400)
+Reason: Bad Request
+HTTP response headers: HTTPHeaderDict({'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache', 'Expires': '-1', 'Strict-Transport-Security': 'max-age=31536000', 'Content-Type': 'application/json', 'Content-Length': '280', 'x-response-time': '70ms', 'X-OPNET-Transaction-Trace': '0c564887-d2ef-445c-b40c-efd2cccb91b9', 'Connection': 'keep-alive', 'v-c-correlation-id': '03acc50b-2bd5-46a0-b7e6-d8754d2eb3e5'})
+HTTP response body: {"id":"6618800542966898804953","submitTimeUtc":"2022-08-30T17:20:54Z","status":"INVALID_REQUEST","reason":"INVALID_DATA","message":"Declined - One or more fields in the request contains invalid data","details":[{"field":"orderInformation.billTo.country","reason":"INVALID_DATA"}]}
+

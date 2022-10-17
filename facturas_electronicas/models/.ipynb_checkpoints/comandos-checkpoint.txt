@@ -1,0 +1,7 @@
+ modelo = self.env['account.move']
+ factura = modelo.search([('name', '=','0000000012')])
+ factura.busca_autorizados()
+ 
+ FE = self.env['facturas_electronicas.facturas_electronicas']
+ 
+ FE.datos =dict(documento = dict(datosTransaccion=dict(listaAutorizadoDescargaFEyEventos = lista_autorizados)))

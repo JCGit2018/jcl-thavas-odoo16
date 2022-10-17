@@ -1,0 +1,168 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* delivery_asap
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-08 01:44+0000\n"
+"PO-Revision-Date: 2022-06-08 01:44+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: delivery_asap
+#: model:ir.model.fields.selection,name:delivery_asap.selection__delivery_carrier__delivery_type__asap
+msgid "ASAP"
+msgstr ""
+
+#. module: delivery_asap
+#: model_terms:ir.ui.view,arch_db:delivery_asap.delivery_view_inherit_ASAP
+msgid "ASAP Configuration"
+msgstr "Configuración ASAP"
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_stock_picking__asap_status
+msgid "Asap Status"
+msgstr "Estatus Asap"
+
+#. module: delivery_asap
+#: model:ir.model.fields.selection,name:delivery_asap.selection__stock_picking__vehicle_type__truck
+msgid "Camion"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields.selection,name:delivery_asap.selection__stock_picking__vehicle_type__car
+msgid "Carro"
+msgstr ""
+
+#. module: delivery_asap
+#: model_terms:ir.ui.view,arch_db:delivery_asap.stock_picking_view_inherit_ASAP
+msgid "Check Status"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_delivery_carrier__asap_price
+msgid "Costo Envío"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_stock_picking__request_later
+msgid "Entrega Tardía"
+msgstr ""
+
+#. module: delivery_asap
+#: model_terms:ir.ui.view,arch_db:delivery_asap.stock_picking_view_inherit_ASAP
+msgid "Info Adicional ASAP"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields.selection,name:delivery_asap.selection__stock_picking__request_later__0
+msgid "Instantaneo"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_stock_picking__special_inst
+msgid "Instrucciones"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_stock_picking__dest_special_inst
+msgid "Instrucciones especiales en Destino"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_delivery_carrier__asap_api_key
+msgid "Key"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields.selection,name:delivery_asap.selection__stock_picking__vehicle_type__bike
+msgid "Moto"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_stock_picking__personal
+msgid "Personal"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields.selection,name:delivery_asap.selection__stock_picking__vehicle_type__pickup
+msgid "Pickup"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields.selection,name:delivery_asap.selection__stock_picking__request_later__1
+msgid "Programado"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_delivery_carrier__delivery_type
+msgid "Provider"
+msgstr "Proveedor"
+
+#. module: delivery_asap
+#: code:addons/delivery_asap/models/.ipynb_checkpoints/delivery_carrier-checkpoint.py:0
+#: code:addons/delivery_asap/models/delivery_carrier.py:0
+#, python-format
+msgid "Recuerde configurar los URL en el metodo de envío"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_delivery_carrier__asap_shared_secret
+msgid "Secret"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model,name:delivery_asap.model_delivery_carrier
+msgid "Shipping Methods"
+msgstr "Métodos de envío"
+
+#. module: delivery_asap
+#: model_terms:ir.ui.view,arch_db:delivery_asap.stock_picking_view_inherit_ASAP
+msgid "Tiempo de Entrega con retraso"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_stock_picking__request_later_time
+msgid "Tiempo de Entrega programado"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_stock_picking__vehicle_type
+msgid "Tipo Vehículo"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_delivery_carrier__asap_token
+msgid "Token"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model,name:delivery_asap.model_stock_picking
+msgid "Transfer"
+msgstr "Albarán"
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_stock_picking__type_id
+msgid "Type"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_delivery_carrier__asap_url_prod
+msgid "URL Producción"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields,field_description:delivery_asap.field_delivery_carrier__asap_url_test
+msgid "URL Pruebas"
+msgstr ""
+
+#. module: delivery_asap
+#: model:ir.model.fields.selection,name:delivery_asap.selection__stock_picking__vehicle_type__van
+msgid "Van"
+msgstr ""

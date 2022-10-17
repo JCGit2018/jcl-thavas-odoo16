@@ -1,0 +1,3 @@
+{'access_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI4NzlmNmM5ZS1kZmI0LTQ3MzgtYWU3NS1hNDQ3MWY0MDAzYzAiLCJpYXQiOjE2NjI0MjY1MDEsImlzcyI6IjVkZDgzYmYwMGU0MjNkMTQ5OGRjYmFjYSIsImV4cCI6MTY2MjQzMDEwMSwiT3JnVW5pdElkIjoiNjJiNjE4NjI0ZGE3OWQzMzRkY2JlYWMyIiwiUmVmZXJlbmNlSWQiOiJiZDk0NmJkYS1hMWY5LTQ5OTEtYWQ1MS04OTliY2U5ZGY2ZDMifQ.3AqTE4_mtW4OHkDHTjRq4_rt-T6HYOuii8pMyYnUTh8',
+ 'device_data_collection_url': 'https://centinelapistag.cardinalcommerce.com/V1/Cruise/Collect',
+ 'reference_id': 'bd946bda-a1f9-4991-ad51-899bce9df6d3'}

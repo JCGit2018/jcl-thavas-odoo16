@@ -1,0 +1,1 @@
+{'TransactionType': 2, 'Approved': True, 'AuthorizationCode': '123456', 'TransactionIdentifier': 'ca563477-b9d3-48fa-84b7-db0cfd3473c9', 'TotalAmount': 101.6, 'CurrencyCode': '840', 'RRN': '228614520090', 'CardBrand': 'Visa', 'IsoResponseCode': '00', 'ResponseMessage': 'Transaction is approved', 'OrderIdentifier': 'S00483'}

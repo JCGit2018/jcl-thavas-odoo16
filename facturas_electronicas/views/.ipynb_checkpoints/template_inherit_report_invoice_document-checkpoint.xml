@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+  <template id="template_inherit_report_invoice_document" inherit_id="account.report_invoice_document"  >
+     <xpath expr="/t/t/div/div[2]/div/div" position="before">
+       <span t-field="o.qr_image" t-options="{'widget': 'image'}"/>
+     </xpath>
+     <xpath expr="/t/t/div/div[2]/div/div" position="after">
+       <p>CUFE: <span t-field="o.cufe"/></p>
+     </xpath>
+     <xpath expr="/t/t/div/div[2]/div/span" position="attributes">
+       <attribute name="style" separator=";" add="margin-left:20px"/>
+     </xpath>
+     <xpath expr="/t/t/div/div[2]/div/span" position="attributes">
+       <attribute name="style" separator=";" add="width:250px;display:inline-block"/>
+     </xpath>
+     <xpath expr="/t/t/div/div[2]/div/span" position="attributes">
+        <attribute name="t-if">o.cufe</attribute>
+     </xpath>
+     <xpath expr="/t/t/div/div[2]/div/p" position="attributes">
+         <attribute name="t-if">o.cufe</attribute>
+      </xpath>
+      <xpath expr="/t/t/div/div[2]/div/p" position="attributes">
+          <attribute name="class" separator=" " add="small"/>
+      </xpath>
+      <xpath expr="/t/t/div/div[2]/div/p" position="attributes">
+          <attribute name="style" separator=";" add="margin-left:20px"/>
+      </xpath> 
+      <xpath expr="/t/t/div/div[2]/div/p/span" position="attributes">
+         <attribute name="style" separator=";" add="width:300px;display:inline-block"/>
+      </xpath>
+
+  </template>            
+
+</odoo>    
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+  <data>
+     <record id="stock_picking_view_inherit_ASAP" model="ir.ui.view">
+       <field name="name">stock.picking.view.inherit.ASAP</field>
+       <field name="model">stock.picking</field>
+       <field name="inherit_id" ref="stock.view_picking_form"/>
+       <field name="arch" type="xml">
+          <xpath expr="//field[@name='carrier_id']" position="after">
+             <xpath expr="//field[@name='is_return_picking']" position="move"/>
+          </xpath>
+          <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+           <page string="Info Adicional ASAP" name="studio_page_Bksey" attrs="{'invisible': ['|',('picking_type_code','=','incoming'),('carrier_id','=',False)]}">
+             <group name="studio_group_Bksey">
+               <group name="studio_group_Bksey_left" attrs="{}">
+                 <field name="special_inst"/>
+                 <field name="vehicle_type"/>
+               </group>
+               <group name="studio_group_Bksey_right">
+                   <field name="dest_special_inst"/>
+                   <field name="request_later" attrs="{}"/>
+                   <field name="request_later_time" string="Tiempo de Entrega con retraso" attrs="{&quot;invisible&quot;: [[&quot;request_later&quot;,&quot;=&quot;,&quot;0&quot;]]}"/>
+                   <field name="asap_status" attrs="{&quot;invisible&quot;: [[&quot;state&quot;,&quot;!=&quot;,&quot;done&quot;]]}"/>
+                   <button name="asap_check_status" type="object" attrs="{&quot;invisible&quot;: [[&quot;state&quot;,&quot;!=&quot;,&quot;done&quot;]]}" string="Check Status" class="oe_highlight"/>
+                </group>
+             </group>
+           </page>
+         </xpath>
+       </field>
+     </record>    
+  </data>
+</odoo>                 
