@@ -10,7 +10,7 @@ _logger = logging.getLogger(__name__)
 
 
 class CobroSuscripciones(models.Model):
-    _inherit = "sale.subscription"
+    _inherit = "sale.order"
     
     def _cron_cobro_orden(self, execute = False):
         if not execute:
@@ -39,7 +39,7 @@ class CobroSuscripciones(models.Model):
         values = self._prepare_renewal_order_values(discard_product_ids, new_lines_ids)
         order = self.env['sale.order'].create(values[self.id])
         self.env.cr.commit()
-        order.message_post(body=(_("This renewal order has been created from the subscription ") + " <a href=# data-oe-model=sale.subscription data-oe-id=%d>%s</a>" % (self.id, self.display_name)))
+        order.message_post(body=(_("This renewal order has been created from the subscription ") + " <a href=# data-oe-model=sale.order data-oe-id=%d>%s</a>" % (self.id, self.display_name)))
         order.order_line._compute_tax_id()
         
         #si hay token procesa el pago, sino aviso de cobro manual

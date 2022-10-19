@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
 
-    <t t-name="OrderSummary_Inherited"  t-inherit="point_of_sale.OrderSummary" t-inherit-mode="extension" owl="1">
+    <t t-name="OrderSummary_Inherited"  t-inherit="point_of_sale.OrderSummary" t-inherit-mode="extension" >
         <xpath expr="//div[@class='subentry']" position="replace"></xpath>
         <xpath expr="//div[@class='entry total']" position="before">
-                    <span class="subentry">Monto: </span>
-                    <span class="subentry">
-                        <t t-esc="subtotal" />
+              <t t-set="_totalWithoutTax" t-value="getTotalWithoutTax()" />
+              <span class="subentry">Subtotal: </span>
+              <span class="subentry">
+              <t t-esc="_totalWithoutTax" />
+              </span>
+              <div t-if="_tax.hasTax" class="subentry">
+                   Taxes:
+                   <span class="value">
+                       <t t-esc="_tax.displayAmount" />
                     </span>
-                    <div t-if="props.tax" class="subentry">
-                        Taxes:
-                        <span class="value">
-                            <t t-esc="props.tax" />
-                        </span>
-                    </div>
+               </div>
         </xpath>
         
 

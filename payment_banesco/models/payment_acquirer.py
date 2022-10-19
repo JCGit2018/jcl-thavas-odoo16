@@ -5,7 +5,7 @@ from odoo.exceptions import UserError
 
 
 class PaymentAcquirer(models.Model):
-    _inherit = 'payment.acquirer'
+    _inherit = 'payment.provider'
 
     provider = fields.Selection(selection_add=[('banesco', 'Banesco')], ondelete={'banesco': 'set default'})
     banesco_merchant_id = fields.Char(required_if_provider='banesco', string="Merchant id")
@@ -16,7 +16,7 @@ class PaymentAcquirer(models.Model):
     banesco_url_prod = fields.Char(required_if_provider='banesco', string="URL produccion")
 
  
-    
+    ''' 
     @api.depends('provider')
     def _compute_view_configuration_fields(self):
         """ Override of payment to hide the credentials page.
@@ -34,3 +34,4 @@ class PaymentAcquirer(models.Model):
             return super()._get_default_payment_method_id()
         return self.env.ref('payment_banesco.payment_method_banesco').id
 
+    '''

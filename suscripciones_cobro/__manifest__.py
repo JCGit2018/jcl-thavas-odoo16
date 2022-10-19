@@ -17,5 +17,10 @@
     ],
     'images': ['static/description/cyber_source_logo.jpg'],
     'auto_install': False,
+    'author': "THAVAS",
+    'website': "http://www.thavasconsultoria.com/odoo",
+
+    'category': 'Sales',
+    'version': '16.0.1',
 }
 
